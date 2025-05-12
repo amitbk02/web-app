@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/your-username/web-app.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Build step (no actual build for HTML)'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh 'scp index.html user@remote_server:/var/www/html/index.html'
+            }
+        }
+    }
+}
